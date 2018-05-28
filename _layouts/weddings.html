@@ -1,0 +1,17 @@
+---
+layout: base
+---
+{% assign name = id %}
+
+{% for wedding in site.data.weddings %}
+
+<div id="{{ wedding.id }}" data-shortId="{{ wedding.shortId }}" class="wrapper">
+    ID CO: {{name}}
+	<h1>{{ wedding.title }}</h1>
+    <h2><a href="post:mainView#show+view@make:WeddingList">Listado de bodas x</a></h2>
+
+    <a href="href="post:mainView#show+view@make:WebView">
+        {{ wedding.id }}
+    </a><br>
+ </div>
+ {% endfor %}

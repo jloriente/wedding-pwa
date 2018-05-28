@@ -1,0 +1,92 @@
+---
+layout: base
+---
+
+{% assign name = page.id %}
+
+{% for wedding in site.data.weddings %}
+    {% if wedding.id == page.id %}
+
+    <div id="{{ wedding.id }}" data-shortId="{{ wedding.shortId }}" class="wrapper">
+        <header>
+
+            <div class="logo-container">
+              <!-- <a class="logo" href="{{ page.baseurl }}" style="background-image: url('{{ site.url }}{{ site.baseurl }}{{ wedding.image }}')"></a> -->
+              <a class="logo" href="{{ page.baseurl }}" style="background-image: url('{{ site.url }}{{ site.baseurl }}/images/wedding-1.png')"></a>
+            </div>
+
+            <div class="centered">
+    			<h1>{{ wedding.title }}</h1>
+    		</div>
+
+    		<!-- <p>Code: {{ wedding.shortId }} / ID: {{ wedding.id }}</p> -->
+
+            {% if site.compass.tagline %}
+            <div class="author-container"><h3>"{{ wedding.tagline }}"</h3></div>
+            {% endif %}
+        </header>
+    	<main>
+    	  <div>
+
+    		  <div id="section-info">
+    			  <h2>Información</h2>
+
+    			  <p><strong>Cuando</strong>: {{ wedding.when }}</p>
+    			  <p><strong>Donde</strong>: {{ wedding.where }}</p>
+
+    		  </div>
+
+    		  <div id="section-details">
+    			  <h2>Detalles</h2>
+    			  <ul>
+    			    <li>La ceremonia empieza a las 5:30 pm</li>
+    			    <li>Recepción y cena justamente despues</li>
+    			    <li>Vestuario semiformal</li>
+    			    <li>Reservas de hotel disponibles para los que esten interesados <a href="http://www.wyndham.com/hotels/pennsylvania/glen-mills/wyndham-garden-glen-mills-wilmington/hotel-overview">Hotel Palafox</a> &mdash; </li>
+    			  </ul>
+    		  </div>
+
+    		  <div id="section-contact">
+    	  	  	  <h2>CONTACTO</h2>
+    		  	  <!-- <p>Please <a href="http://goo.gl/forms/fSPbSsEVRW">send your RSVP</a> online by 1 May 2016.</p> -->
+    		  	  <p>Si tienes alguna pregunta, por favor <a href="mailto:{{ wedding.email }}" onmouseover="this.href=this.href.replace(/z/g, '');">contactanos</a>.</p>
+    		  </div>
+
+              <hr />
+
+    		  <div id="section-media">
+    			  <h2>FOTOS Y VIDEOS</h2>
+
+    			  Comparte con nosotos las fotos y videos que tengas de la boda para que podamos crear un album de recuerdos:
+    			  <div class="centered">
+                      <br>
+    				  <!-- <a href="https://www.dropbox.com/request/{{ wedding.dropboxFolderId }}">Subir fotos y videos</a> -->
+                      <form action="https://www.dropbox.com/request/{{ wedding.dropboxFolderId }}">
+                          <input type="submit" value="Subir fotos o videos" />
+                      </form>
+
+    			  </div>
+    			  <!-- <p>{{ wedding.dropboxFolderId }}</p> -->
+    		  </div>
+
+              <hr />
+
+    		  <!-- <div id="section-guests">
+    			  <h2>ASISTE A LA BODA</h2>
+    			  Recibe notificationes sobre lo que va ocurriendo en la boda:
+    			  <div class="centered">
+    				  <form class="centered" action="http://localhost:3000/wedding/67fb6740-3338-4791-98ef-b3822f5a5616/" method="get">
+    				  		<input type="hidden" name="weddingId" value="{{ wedding.id }}">
+    				    	<!-- <button type="submit">Get wedding details</button> -->
+    						<!-- TODO: pass the device token from firebase 
+    				    	<button type="submit" formmethod="post" formaction="http://localhost:3000/wedding/67fb6740-3338-4791-98ef-b3822f5a5616/{{ wedding.id }}/guest">Suscribirme a la boda</button>
+    				  </form>
+    			  </div>
+    		  </div>
+
+    		  <hr/> -->
+
+    	  </main>
+     </div>
+     {% endif %}
+{% endfor %}
